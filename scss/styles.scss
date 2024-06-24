@@ -1,0 +1,458 @@
+@use "fonts";
+@use "reset";
+@use "general";
+@use "ombres" as bs;
+@use "dégradés" as gd;
+@use "couleurs" as c;
+@use "media" as m;
+@use "animation" as a;
+
+.loader {
+  position: absolute;
+  top: 50px;
+  width: 48px;
+  height: 48px;
+  border: 5px solid #ff79da;
+  border-bottom-color: #9356dc;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation-name: rotation;
+  animation-duration: 3s;
+  animation-delay: 0s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+
+  margin: 50px auto;
+
+  z-index: 99;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+    display: inline-block;
+  }
+  100% {
+    transform: rotate(360deg);
+    display: none;
+  }
+}
+
+.film-opaque {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(255, 255, 255, 0.7);
+
+  animation-name: fadeIn;
+  animation-duration: 3s;
+  animation-delay: 0s;
+  animation-fill-mode: forwards;
+
+  z-index: 89;
+
+  @keyframes fadeIn {
+    from {
+      background-color: rgba(255, 255, 255, 0.7);
+    }
+    to {
+      // opacity: 0;
+      display: none;
+    }
+  }
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 63px;
+  background-color: white;
+  box-shadow: bs.$bs-header;
+
+  @include m.xl {
+    height: 92px;
+  }
+
+  img {
+    width: 162px;
+
+    @include m.xl {
+      width: 200px;
+    }
+  }
+
+  + p {
+    width: 100%;
+    padding: 20px;
+    background-color: c.$cl-gris-f;
+    text-align: center;
+
+    i {
+      width: 12px;
+      margin-right: 15px;
+    }
+  }
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 18px;
+  margin: 30px 0;
+
+  h1 {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  p {
+    font-size: 18px;
+    font-weight: 300;
+    text-align: center;
+    margin: 10px 0;
+    padding: 0 25px;
+  }
+
+  a {
+    width: 218px;
+    height: 50px;
+    font-size: 16px;
+    font-weight: 500;
+
+    text-align: center;
+    line-height: 50px;
+
+    border: none;
+    border-radius: 50px;
+    background: gd.$gd-btn-default;
+    box-shadow: bs.$bs-btn;
+
+    color: white;
+
+    cursor: pointer;
+
+    // transition: background 3s ease;
+
+    &:hover {
+      background: gd.$gd-btn-hover;
+    }
+  }
+}
+
+.fonctionnement {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: white;
+  padding: 50px 0px 70px 0;
+
+  article {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 25px;
+    min-width: 380px;
+    max-width: 1080px;
+    width: 100%;
+    padding: 0 25px;
+
+    h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin: 10px 0;
+      align-self: flex-start;
+    }
+
+    .media {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      gap: 25px;
+
+      width: 100%;
+
+      @include m.xl {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      button {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+        width: 100%;
+        // max-width: 768px;
+        min-width: 310px;
+        height: 72px;
+        border: none;
+        border-radius: 20px;
+        background: c.$cl-gris-btn;
+        font-size: 16px;
+        font-weight: 500;
+        box-shadow: bs.$bs-btn-fonctionnement;
+        cursor: pointer;
+
+        @include m.xl {
+          min-width: 250px;
+          max-width: 300px;
+        }
+
+        span {
+          position: absolute;
+          left: -12px;
+          width: 24px;
+          height: 24px;
+          border-radius: 50px;
+          background-color: c.$cl-violet;
+          color: white;
+          text-align: center;
+          line-height: 24px;
+          margin: 0;
+          padding: 0;
+        }
+
+        i {
+          color: c.$cl-gris-icones;
+
+          transition-duration: 0.5s;
+          transition-property: color;
+          transition-timing-function: ease-in-out;
+        }
+        &:hover {
+          i {
+            color: c.$cl-violet;
+          }
+        }
+      }
+    }
+  }
+}
+
+.fa-solid {
+  font-size: 26px;
+}
+
+.restaurants {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 55px;
+
+  .res-column {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 30px;
+    min-width: 300px;
+    max-width: 1080px;
+    width: 100%;
+    padding: 0 25px;
+    // margin-top: 55px;
+
+    h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin: 10px 0;
+      align-self: flex-start;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+
+      width: 100%;
+      height: auto;
+
+      @include m.xl {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      a {
+        display: flex;
+        flex-direction: column;
+        // flex-grow: 1;
+        background-color: white;
+        // height: auto;
+        border-top-right-radius: 20px;
+        border-top-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        overflow: hidden;
+        width: 100%;
+
+        @include m.xl {
+          max-width: 450px;
+        }
+
+        article {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+
+          .image-encart {
+            position: relative;
+            width: auto;
+            height: 175px;
+
+            img {
+              position: relative;
+              min-width: 300px;
+              width: 100%;
+              height: 175px;
+              object-fit: cover;
+            }
+
+            h5 {
+              position: absolute;
+              top: 15px;
+              right: 15px;
+
+              background-color: c.$cl-vert-c;
+              border-radius: 5px;
+              color: c.$cl-vert-f;
+
+              padding: 7px 10px;
+            }
+          }
+
+          .legende {
+            display: flex;
+            flex-direction: row;
+            // justify-content: center;
+            align-items: center;
+            height: 75px;
+            padding: 0 20px;
+
+            .titre-soustitre {
+              display: flex;
+              flex-direction: column;
+              flex: 3;
+              gap: 5px;
+            }
+
+            .hearts {
+              position: relative;
+
+              display: flex;
+              flex: 1;
+              align-items: center;
+              justify-content: center;
+              font-size: 25px;
+
+              height: 100%;
+
+              // margin-top: 25px;
+
+              .fa-regular {
+                display: flex;
+                position: absolute;
+                top: 15px;
+                right: 0;
+
+                z-index: 1;
+              }
+
+              .fa-solid {
+                display: flex;
+                position: absolute;
+                top: 15px;
+                right: 0;
+
+                background: gd.$gd-btn-heatrs;
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: transparent;
+
+                z-index: 10;
+
+                opacity: 0;
+
+                &:hover {
+                  opacity: 1;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px;
+  width: 100%;
+  background-color: #353535;
+  padding: 25px;
+  margin-top: 55px;
+
+  @include m.xl {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+
+    padding-top: 85px;
+    padding-bottom: 60px;
+  }
+
+  img.left {
+    width: 125px;
+    margin: 15px 0;
+
+    display: block;
+
+    @include m.xl {
+      display: none;
+    }
+  }
+
+  P {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+
+    .fa-solid {
+      color: white;
+      font-size: 20px;
+      margin-right: 15px;
+    }
+  }
+
+  img.right {
+    width: 125px;
+    margin: 0px 15px;
+
+    display: none;
+
+    @include m.xl {
+      display: inline-block;
+    }
+  }
+}

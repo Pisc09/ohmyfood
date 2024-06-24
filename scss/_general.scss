@@ -1,0 +1,19 @@
+@use "couleurs" as c;
+
+html,
+body {
+  width: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  font-family: "Roboto", sans-serif;
+  background-color: c.$cl-gris-c;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
